@@ -43,7 +43,7 @@ export default function CartDrawer() {
           <ShoppingBag />
         </div>
       </DrawerTrigger>
-      <DrawerContent className="fixed bottom-0 left-0 overscroll-y-auto max-h-[90vh] min-h-[50vh]">
+      <DrawerContent className="fixed bottom-0 left-0 right-0 max-h-[90vh] min-h-[50vh] overflow-y-auto overscroll-y-contain">
         <DrawerHeader>
           <CartMessage />
         </DrawerHeader>
