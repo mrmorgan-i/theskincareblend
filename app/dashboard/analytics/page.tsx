@@ -9,10 +9,16 @@ import { db } from "@/server"
 
 import Sales from "./sales"
 import Earnings from "./earnings"
+import { redirect } from "next/navigation"
+import { auth } from "@/server/auth"
 
 export const revalidate = 0
 
 export default async function Analytics() {
+  const session = await auth()
+
+  if(session?.user.role !== "admin") return redirect('/dashboard/settings')
+    
   const totalOrders = await db.query.orderProduct.findMany({
     with: {
       order: { with: { user: true } },
