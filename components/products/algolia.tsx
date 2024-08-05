@@ -84,6 +84,7 @@ export default function Algolia() {
     >
       <div className="relative">
         <SearchBox
+          placeholder="Search for products"
           onFocus={() => setActive(true)}
           onBlur={() => {
             setTimeout(() => {
