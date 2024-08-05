@@ -64,7 +64,7 @@ const Footer = () => {
           <div className="flex justify-between items-center">
             <p className="text-sm">&copy; {new Date().getFullYear()} The Skincare Blend. All rights reserved.</p>
             <div className="flex space-x-4">
-              <Link href="https://facebook.com/theskincareblendgh" passHref>
+              <Link href="https://www.facebook.com/profile.php?id=61556911727911" passHref>
                 <Button variant="ghost" size="icon">
                   <FaFacebook className="h-5 w-5" />
                 </Button>

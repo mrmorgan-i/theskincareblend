@@ -16,7 +16,7 @@ const contactInfo = [
 ]
 
 const socialLinks = [
-  { icon: Facebook, label: 'Facebook', href: 'https://facebook.com/theskincareblendgh' },
+  { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61556911727911' },
   { icon: Instagram, label: 'Instagram', href: 'https://instagram.com/theskincareblendgh' },
   { icon: Twitter, label: 'Twitter', href: 'https://twitter.com/theskincareblendgh' },
   { icon: FaWhatsapp, label: 'WhatsApp', href: 'https://wa.me/message/5QXFADE5PAK6D1' },
