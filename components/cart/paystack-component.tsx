@@ -86,7 +86,8 @@ const PaystackComponent: React.FC<PaystackComponentProps> = ({ publicKey, cart }
     };
 
     return (
-        <div className="flex flex-col md:flex-row gap-6">
+        // <div className="flex flex-col md:flex-row gap-6 overflow-y-auto max-h-full">
+        <div className="flex flex-col md:flex-row gap-6 overflow-y-auto max-h-full">
             {/* Form Section */}
             <div className="md:w-2/3 bg-card p-6 rounded-lg shadow-md">
                 <h2 className="text-2xl font-semibold mb-6 text-center text-foreground">Checkout</h2>
@@ -189,6 +190,7 @@ const PaystackComponent: React.FC<PaystackComponentProps> = ({ publicKey, cart }
             </div>
             
         </div>
+        // </div>
     );
 };
 

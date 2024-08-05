@@ -43,16 +43,16 @@ export default function CartDrawer() {
           <ShoppingBag />
         </div>
       </DrawerTrigger>
-      <DrawerContent className="fixed bottom-0 left-0 right-0 max-h-[90vh] min-h-[50vh] overflow-y-auto overscroll-y-contain">
+      <DrawerContent>
         <DrawerHeader>
           <CartMessage />
         </DrawerHeader>
         <CartProgress />
-        <div className="p-4 pb-8">
-          {checkoutProgress === 'cart-page' && <CartItems />}
-          {checkoutProgress === "payment-page" && <Payment />}
-          {checkoutProgress === "confirmation-page" && <OrderConfirmed />}
-        </div>
+          <div className="p-4 pb-8">
+            {checkoutProgress === 'cart-page' && <CartItems />}
+            {checkoutProgress === "payment-page" && <Payment />}
+            {checkoutProgress === "confirmation-page" && <OrderConfirmed />}
+          </div>
       </DrawerContent>
     </Drawer>
   );

@@ -12,7 +12,7 @@ export default function Payment() {
   const publicKey = process.env.NEXT_PUBLIC_PUBLISH_KEY!
 
   return (
-    <motion.div className="max-w-2xl mx-auto">
+    <motion.div className="max-w-2xl mx-auto max-h-full">
       <PaystackComponent publicKey={publicKey} cart={cart} />
     </motion.div>
   )
