@@ -16,7 +16,9 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: "The Skincare Blend Store",
   description: "Cosmetics and skincare products for all skin types",
-  
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
