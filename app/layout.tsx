@@ -6,6 +6,7 @@ import Nav from "@/components/navigation/nav";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import Toaster from "@/components/ui/toaster";
 import Footer from "@/components/navigation/footer";
+import DFooter from "@/components/navigation/dfooter";
 
 
 const roboto = Roboto({
@@ -39,6 +40,7 @@ export default function RootLayout({
           {children}
           <div className="pt-6">
           <Footer />
+          <DFooter />
           </div>
           </div>
         </ThemeProvider>
