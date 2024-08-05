@@ -2,6 +2,7 @@
 
 import { ProductSchema, zProductSchema } from "@/types/product-schema"
 import { useForm } from "react-hook-form"
+import { FaCediSign } from "react-icons/fa6";
 
 import {
     Card,
@@ -148,8 +149,8 @@ export default function ProductForm(){
                             <FormLabel>Product Price</FormLabel>
                             <FormControl>
                                 <div className="flex items-center gap-1">
-                                    <DollarSign size={36} className="p-2 bg-muted rounded-md" />
-                                    <Input {...field} type="number" placeholder="Your price in USD" step="0.1" min={0}/>
+                                    <FaCediSign size={36} className="p-2 bg-muted rounded-md" />
+                                    <Input {...field} type="number" placeholder="Your price in GHS" step="0.1" min={0}/>
                                 </div>
                             </FormControl>
                             <FormDescription className="text-xs">
