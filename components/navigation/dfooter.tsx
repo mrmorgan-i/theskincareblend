@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const DFooter: React.FC = () => {
   return (
-    <footer className="py-1 bg-secondary">
+    <footer className="py-1 bg-gradient-to-r from-gray-900 to-black">
       <div className="container mx-auto px-4">
         <p className="text-white text-sm text-center">
           Developed by{' '}
