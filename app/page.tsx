@@ -18,10 +18,11 @@ export default async function Home() {
 
     return (
       <main className="">
-        {/* <Algolia /> */}
         <ProductTags />
         <WelcomeBanner />
-        <Products variants={data} />
+        <div id="products-section">
+          <Products variants={data} />
+      </div>
       </main>
     );
 }
