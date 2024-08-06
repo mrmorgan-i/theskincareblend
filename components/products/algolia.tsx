@@ -62,7 +62,7 @@ function Hit({
               __html: hit._highlightResult.productType.value,
             }}
           ></p>
-          <p className="font-medium">${hit.price}</p>
+          <p className="font-medium">₵{hit.price}</p>
         </div>
       </Link>
     </div>
