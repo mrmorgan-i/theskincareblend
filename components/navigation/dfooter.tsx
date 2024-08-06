@@ -8,7 +8,7 @@ const DFooter: React.FC = () => {
         <p className="text-white text-sm text-center">
           Developed by{' '}
           <Link
-            href="https://instagram.com/klmdesignsig"
+            href="https://instagram.com/klm_designsig"
             target="_blank"
             rel="noopener noreferrer"
             className="font-bold hover:underline transition-all duration-300"

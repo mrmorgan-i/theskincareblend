@@ -8,6 +8,7 @@ import Image from "next/image"
 import { Card } from "../ui/card"
 import { useMemo, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { Search } from "lucide-react"
 
 function Hit({
   hit,
@@ -39,79 +40,76 @@ function Hit({
     // if(hit._highlightResult.title.matchLevel === 'none' && hit._highlightResult.productType.matchLevel === 'none'){
     //     return null
     // }
-  return (
-    <div className="p-4 mb-2 hover:bg-secondary ">
+    return (
       <Link
         href={`/products/${hit.objectID}?id=${hit.objectID}&productID=${hit.id}&price=${hit.price}&title=${hit.title}&type=${hit.productType}&image=${hit.variantImages[0]}&variantID=${hit.objectID}`}
+        className="block p-4 hover:bg-secondary transition-colors duration-200"
       >
-        <div className="flex w-full gap-12 items-center justify-between">
+        <div className="flex items-center gap-4">
           <Image
             src={hit.variantImages}
             alt={hit.title}
             width={60}
             height={60}
+            className="rounded-md object-cover"
           />
-          <p
-            dangerouslySetInnerHTML={{
-              __html: hit._highlightResult.title.value,
-            }}
-          ></p>
-
-          <p
-            dangerouslySetInnerHTML={{
-              __html: hit._highlightResult.productType.value,
-            }}
-          ></p>
-          <p className="font-medium">₵{hit.price}</p>
+          <div className="flex-grow">
+            <p className="font-medium" dangerouslySetInnerHTML={{ __html: hit._highlightResult.title.value }}></p>
+            <p className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: hit._highlightResult.productType.value }}></p>
+          </div>
+          <p className="font-semibold">₵{hit.price}</p>
         </div>
       </Link>
-    </div>
-  )
-}
+    )
+  }
+  
 
-export default function Algolia() {
-  const [active, setActive] = useState(false)
-
-  const MCard = useMemo(() => motion(Card), [])
-  return (
-    <InstantSearchNext
-      future={{
-        persistHierarchicalRootCount: true,
-        preserveSharedStateOnUnmount: true,
-      }}
-      indexName="products"
-      searchClient={searchClient}
-    >
-      <div className="relative">
-        <SearchBox
-          placeholder="Search for products"
-          onFocus={() => setActive(true)}
-          onBlur={() => {
-            setTimeout(() => {
-              setActive(false)
-            }, 100)
-          }}
-          classNames={{
-            input:
-              " h-full w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
-            submitIcon: "hidden",
-            form: "relative mb-4",
-            resetIcon: "hidden",
-          }}
-        />
-        <AnimatePresence>
-          {active && (
-            <MCard
-              animate={{ opacity: 1, scale: 1 }}
-              initial={{ opacity: 0, scale: 0.8 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              className="absolute w-full z-50 overflow-y-scroll h-80"
-            >
-              <Hits hitComponent={Hit} className="rounded-md" />
-            </MCard>
-          )}
-        </AnimatePresence>
-      </div>
-    </InstantSearchNext>
-  )
-}
+  export default function Algolia() {
+    const [active, setActive] = useState(false)
+    const MCard = useMemo(() => motion(Card), [])
+  
+    return (
+      <InstantSearchNext
+        future={{
+          persistHierarchicalRootCount: true,
+          preserveSharedStateOnUnmount: true,
+        }}
+        indexName="products"
+        searchClient={searchClient}
+      >
+        <div className="relative max-w-2xl mx-auto">
+          <SearchBox
+            placeholder="Search for products"
+            onFocus={() => setActive(true)}
+            onBlur={() => {
+              setTimeout(() => setActive(false), 200)
+            }}
+            classNames={{
+              form: "relative mb-4",
+              input: "w-full h-12 pl-12 pr-4 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent",
+              submit: "absolute left-4 top-1/2 transform -translate-y-1/2",
+              submitIcon: "hidden",
+              reset: "absolute right-4 top-1/2 transform -translate-y-1/2",
+              resetIcon: "text-gray-400 hover:text-gray-600",
+            }}
+            submitIconComponent={() => (
+              <Search className="w-5 h-5 text-gray-400" />
+            )}
+          />
+          <AnimatePresence>
+            {active && (
+              <MCard
+                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: -20 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.2 }}
+                className="absolute w-full z-50 overflow-y-auto max-h-[70vh] shadow-lg rounded-lg border border-gray-200"
+              >
+                <Hits hitComponent={Hit} className="divide-y divide-gray-200" />
+              </MCard>
+            )}
+          </AnimatePresence>
+        </div>
+      </InstantSearchNext>
+    )
+  }

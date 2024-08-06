@@ -1,61 +1,44 @@
 "use client"
 
+import { useCallback, useMemo } from "react"
 import { cn } from "@/lib/utils"
 import { Badge } from "../ui/badge"
 import { useRouter, useSearchParams } from "next/navigation"
 
+const tags = [
+  { id: "all", label: "All", color: "bg-black hover:bg-black/75" },
+  { id: "perfume", label: "Perfumes", color: "bg-blue-500 hover:bg-blue-600" },
+  { id: "skincare", label: "Skincare", color: "bg-green-500 hover:bg-green-600" },
+  { id: "cosmetics", label: "Cosmetics", color: "bg-purple-500 hover:bg-purple-600" },
+]
+
 export default function ProductTags() {
   const router = useRouter()
   const params = useSearchParams()
-  const tag = params.get("tag")
+  const currentTag = params.get("tag") || "all"
 
-  const setFilter = (tag: string) => {
-    if (tag) {
-      router.push(`?tag=${tag}`)
-    }
-    if (!tag) {
-      router.push("/")
-    }
-  }
+  const setFilter = useCallback((tag: string) => {
+    router.push(tag === "all" ? "/" : `?tag=${tag}`)
+  }, [router])
+
+  const tagElements = useMemo(() => tags.map(tag => (
+    <Badge
+      key={tag.id}
+      onClick={() => setFilter(tag.id)}
+      className={cn(
+        "cursor-pointer transition-all duration-300 hover:opacity-100",
+        tag.color,
+        currentTag === tag.id ? "opacity-100" : "opacity-50"
+      )}
+      aria-label={`Filter by ${tag.label}`}
+    >
+      {tag.label}
+    </Badge>
+  )), [currentTag, setFilter])
 
   return (
-    <div className="my-4 flex gap-4 items-center justify-center">
-      <Badge
-        onClick={() => setFilter("")}
-        className={cn(
-          "cursor-pointer bg-black hover:bg-black/75 hover:opacity-100",
-          !tag ? "opacity-100" : "opacity-50"
-        )}
-      >
-        All
-      </Badge>
-      <Badge
-        onClick={() => setFilter("perfume")}
-        className={cn(
-          "cursor-pointer bg-blue-500 hover:bg-blue-600 hover:opacity-100",
-          tag === "perfume" && tag ? "opacity-100" : "opacity-50"
-        )}
-      >
-        Perfumes
-      </Badge>
-      <Badge
-        onClick={() => setFilter("skincare")}
-        className={cn(
-          "cursor-pointer bg-green-500 hover:bg-green-600 hover:opacity-100",
-          tag === "skincare" && tag ? "opacity-100" : "opacity-50"
-        )}
-      >
-        Skincare
-      </Badge>
-      <Badge
-        onClick={() => setFilter("cosmetics")}
-        className={cn(
-          "cursor-pointer bg-purple-500 hover:bg-purple-600 hover:opacity-100",
-          tag === "cosmetics" && tag ? "opacity-100" : "opacity-50"
-        )}
-      >
-        Cosmetics
-      </Badge>
+    <div className="my-4 flex gap-4 items-center justify-center overflow-x-auto pb-2">
+      {tagElements}
     </div>
   )
 }

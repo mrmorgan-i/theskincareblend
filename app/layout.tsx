@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/providers/theme-provider";
 import Toaster from "@/components/ui/toaster";
 import Footer from "@/components/navigation/footer";
 import DFooter from "@/components/navigation/dfooter";
+import Algolia from "@/components/products/algolia";
 
 
 const roboto = Roboto({
@@ -37,6 +38,7 @@ export default function RootLayout({
           <div className="flex-grow px-6 md:px-12 mx-auto max-w-8xl">
           <Nav />
           <Toaster />
+          <Algolia />
           {children}
           <div className="pt-6">
           <Footer />
