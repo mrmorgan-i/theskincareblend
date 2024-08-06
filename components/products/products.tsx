@@ -9,6 +9,7 @@ import { useMemo } from "react"
 import { useSearchParams } from "next/navigation"
 import { useCartStore } from "@/lib/client-store" 
 import { Button } from "../ui/button"
+import { toast } from "sonner"
 
 type ProductTypes = {
     variants: VariantsWithProduct[]
@@ -25,6 +26,10 @@ export default function Products({ variants }: ProductTypes) {
         }
         return variants
     }, [paramTag, variants])
+
+    const handleAddToCartSuccess = () => {
+        toast.success('Added to cart');
+    };
 
     return (
         <main className="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-10">
@@ -58,16 +63,19 @@ export default function Products({ variants }: ProductTypes) {
                     </Link>
                     <Button
                         className="mt-2 w-full bg-primary text-primary-foreground py-2 px-4 rounded-md transition-colors duration-300 hover:bg-primary/90"
-                        onClick={() => addToCart({
-                            name: variant.product.title,
-                            image: variant.variantImages[0].url,
-                            id: variant.id,
-                            variant: {
-                                variantID: variant.id,
-                                quantity: 1
-                            },
-                            price: variant.product.price
-                        })}
+                        onClick={() => {
+                            addToCart({
+                                name: variant.product.title,
+                                image: variant.variantImages[0].url,
+                                id: variant.id,
+                                variant: {
+                                    variantID: variant.id,
+                                    quantity: 1
+                                },
+                                price: variant.product.price
+                            });
+                            handleAddToCartSuccess(); // Call the success handler here
+                        }}
                     >
                         Add to Cart
                     </Button>
