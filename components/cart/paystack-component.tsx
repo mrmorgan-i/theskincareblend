@@ -28,10 +28,19 @@ const PaystackComponent: React.FC<PaystackComponentProps> = ({ publicKey, cart }
     const [surname, setSurname] = useState("");
     const [phone, setPhone] = useState("");
     const [ref, setRef] = useState("");
+    const [isFormValid, setIsFormValid] = useState(false);
 
     useEffect(() => {
         setRef("" + Math.floor(Math.random() * 1000000000 + 1));
     }, []);
+
+    useEffect(() => {
+        if (name && surname && email && phone) {
+            setIsFormValid(true);
+        } else {
+            setIsFormValid(false);
+        }
+    }, [name, surname, email, phone]);
 
     const totalPrice = cart.reduce((acc, item) => {
         return acc + item.price * item.variant.quantity;
@@ -86,7 +95,6 @@ const PaystackComponent: React.FC<PaystackComponentProps> = ({ publicKey, cart }
     };
 
     return (
-        // <div className="flex flex-col md:flex-row gap-6 overflow-y-auto max-h-full">
         <div className="flex flex-col md:flex-row gap-6 overflow-y-auto max-h-full">
             {/* Form Section */}
             <div className="md:w-2/3 bg-card p-6 rounded-lg shadow-md">
@@ -179,18 +187,15 @@ const PaystackComponent: React.FC<PaystackComponentProps> = ({ publicKey, cart }
                     <span className="font-semibold text-primary">₵{totalPrice.toFixed(2)}</span>
                 </div>
                 <div className="mt-6">
-                    <Button onClick={() => setCartOpen(false)} className="w-full" variant={'ghost'}>
+                    <Button onClick={() => setCartOpen(false)} className="w-full" variant={'ghost'} disabled={!isFormValid}>
                         <PaystackButton
                             {...componentProps}
-                            className="w-full bg-primary text-primary-foreground py-3 px-4 rounded-md hover:bg-primary/90 transition-colors duration-200 flex items-center justify-center"
+                            className={`w-full bg-primary text-primary-foreground py-3 px-4 rounded-md transition-colors duration-200 flex items-center justify-center ${!isFormValid ? 'opacity-50 cursor-not-allowed' : 'hover:bg-primary/90'}`}
                         />
                     </Button>
-                    
                 </div>
             </div>
-            
         </div>
-        // </div>
     );
 };
 

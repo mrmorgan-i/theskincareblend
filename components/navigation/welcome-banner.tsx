@@ -25,7 +25,7 @@ export default function WelcomeBanner() {
         <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center leading-tight md:leading-normal">Welcome to The Skincare Blend Store</h1>
         <p className="text-xl md:text-2xl mb-6 text-center">Discover your perfect skincare routine</p>
         <Button onClick={handleScroll} className="bg-white text-black px-6 py-2 rounded-full font-semibold hover:bg-opacity-90 transition-colors">
-          Find Products Below
+          Shop Now
         </Button>
       </div>
     </div>

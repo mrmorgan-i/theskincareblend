@@ -7,7 +7,6 @@ import { useTheme } from "next-themes"
 
 export default function Payment() {
   const { cart } = useCartStore()
-  const { theme } = useTheme()
 
   const publicKey = process.env.NEXT_PUBLIC_PUBLISH_KEY!
 

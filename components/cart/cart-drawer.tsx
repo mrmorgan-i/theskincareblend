@@ -25,7 +25,7 @@ export default function CartDrawer() {
   };
 
   return (
-    <Drawer open={cartOpen} onOpenChange={setCartOpen} onClose={handleDrawerClose}> {/* Add onClose handler here */}
+    <Drawer open={cartOpen} onOpenChange={setCartOpen} onClose={handleDrawerClose}>
       <DrawerTrigger>
         <div className="relative px-2">
           <AnimatePresence>
