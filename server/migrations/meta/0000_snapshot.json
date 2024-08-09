@@ -1,5 +1,5 @@
 {
-  "id": "02e95ab8-2e7b-4675-a931-f08c8787c44a",
+  "id": "2a7ac874-3431-4266-a910-7b154ab372d4",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -261,12 +261,6 @@
         },
         "receiptURL": {
           "name": "receiptURL",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "paymentIntentID": {
-          "name": "paymentIntentID",
           "type": "text",
           "primaryKey": false,
           "notNull": false

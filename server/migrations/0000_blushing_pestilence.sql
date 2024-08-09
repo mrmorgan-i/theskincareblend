@@ -41,8 +41,7 @@ CREATE TABLE IF NOT EXISTS "orders" (
 	"total" real NOT NULL,
 	"status" text NOT NULL,
 	"created" timestamp DEFAULT now(),
-	"receiptURL" text,
-	"paymentIntentID" text
+	"receiptURL" text
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "password_reset_tokens" (

@@ -5,15 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1722377098635,
-      "tag": "0000_magenta_marvex",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1722387536487,
-      "tag": "0001_complete_karnak",
+      "when": 1723212843612,
+      "tag": "0000_blushing_pestilence",
       "breakpoints": true
     }
   ]
