@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { LogIn } from 'lucide-react';
 import Logo from './logo';
 import CartDrawer from '../cart/cart-drawer';
+import ThemeSwitcher from './theme-switcher';
 
 export default async function Nav() {
     const session = await auth();
@@ -15,8 +16,11 @@ export default async function Nav() {
                 <ul className='flex justify-between items-center md:gap-8 gap-4'>
                     <li className='flex flex-1'>
                         <Link href={"/"} aria-label='theskincareblend logo'>
-                                <Logo />
+                            <Logo />
                         </Link>
+                    </li>
+                    <li className="flex items-center">
+                        <ThemeSwitcher />
                     </li>
                     <li className='relative flex items-center hover:bg-muted'>
                         <CartDrawer />
