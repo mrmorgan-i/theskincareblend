@@ -25,7 +25,7 @@ export default async function Nav() {
                                     <Menu size={20} />
                                 </Button>
                             </SheetTrigger>
-                            <SheetContent side="right" className="w-[250px] sm:w-[300px]">
+                            <SheetContent side="left" className="w-[250px] sm:w-[300px]">
                                 <nav className="flex flex-col space-y-4 mt-8">
                                     <ThemeSwitcher />
                                     {/* Add any other menu items here */}
