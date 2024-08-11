@@ -8,7 +8,7 @@ const domain = getBaseURL()
 
 export const sendTwoFactorTokenEmail = async (email: string, token: string) => {
   const { data, error } = await resend.emails.send({
-    from: "onboarding@resend.dev",
+    from: "noreply@theskincareblend.store",
     to: email,
     subject: "🔒 TheSkincareBlend - Your Two-Factor (2FA) Code",
     html: `
@@ -32,7 +32,7 @@ export const sendTwoFactorTokenEmail = async (email: string, token: string) => {
 export const sendVerificationEmail = async (email: string, token: string) => {
   const confirmLink = `${domain}/auth/new-verification?token=${token}`
   const { data, error } = await resend.emails.send({
-    from: "onboarding@resend.dev",
+    from: "noreply@theskincareblend.store",
     to: email,
     subject: "✅ TheSkincareBlend - Confirm Your Email",
     html: `
@@ -56,7 +56,7 @@ export const sendVerificationEmail = async (email: string, token: string) => {
 export const sendPasswordResetEmail = async (email: string, token: string) => {
   const resetLink = `${domain}/auth/new-password?token=${token}`
   const { data, error } = await resend.emails.send({
-    from: "onboarding@resend.dev",
+    from: "noreply@theskincareblend.store",
     to: email,
     subject: "🔑 TheSkincareBlend - Password Reset Request",
     html: `
