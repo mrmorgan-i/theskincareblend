@@ -47,11 +47,13 @@ export const newVerification = async (token: string) => {
         where: eq(users.email, existingToken.email)
     })
     if(!existingUser) return {error: "Email does not exist"}
-    await db.update(users).set({
-        emailVerified: new Date(),
-        email: existingToken.email,
-    })
-
+    
+    // Update only the specific user
+    await db.update(users)
+      .set({
+          emailVerified: new Date(),
+      })
+      .where(eq(users.id, existingUser.id))  // Add this line to update only the specific user
 
     await db.delete(emailTokens).where(eq(emailTokens.id, existingToken.id))
     return {success: "Email verified"}

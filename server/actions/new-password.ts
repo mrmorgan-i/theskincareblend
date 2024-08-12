@@ -9,6 +9,7 @@ import { eq } from "drizzle-orm"
 import bcrypt from "bcrypt"
 import { Pool } from "@neondatabase/serverless"
 import { drizzle } from "drizzle-orm/neon-serverless"
+import { redirect } from "next/navigation"
 
 const action = createSafeActionClient()
 
