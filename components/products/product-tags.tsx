@@ -8,8 +8,10 @@ import { useRouter, useSearchParams } from "next/navigation"
 const tags = [
   { id: "all", label: "All", color: "bg-black hover:bg-black/75" },
   { id: "perfume", label: "Perfumes", color: "bg-blue-500 hover:bg-blue-600" },
+  { id: "cleanser", label: "Cleansers", color: "bg-yellow-500 hover:bg-yellow-600" },
+  { id: "moisturizer", label: "Moiturizers", color: "bg-red-500 hover:bg-red-600" },
   { id: "skincare", label: "Skincare", color: "bg-green-500 hover:bg-green-600" },
-  { id: "cosmetics", label: "Cosmetics", color: "bg-purple-500 hover:bg-purple-600" },
+  // { id: "cosmetics", label: "Cosmetics", color: "bg-purple-500 hover:bg-purple-600" },
 ]
 
 export default function ProductTags() {
