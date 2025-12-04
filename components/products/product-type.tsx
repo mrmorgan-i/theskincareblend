@@ -8,7 +8,7 @@ export default function ProductType({
     variants,
 }: {variants: VariantsWithImagesTags[]}) {
     const searchParams = useSearchParams()
-    const selectedType = searchParams.get('type' || variants[0].productType)
+    const selectedType = searchParams.get('type') || variants[0].productType
     return variants.map((variant) => {
         if(variant.productType === selectedType){
             return (

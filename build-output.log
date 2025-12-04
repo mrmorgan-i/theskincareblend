@@ -1,0 +1,42 @@
+
+> theskincareblend@0.1.0 build
+> next build
+
+   ▲ Next.js 15.5.7
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 23.9s
+   Linting and checking validity of types ...
+
+./app/dashboard/add-product/product-form.tsx
+75:8  Warning: React Hook useEffect has missing dependencies: 'checkProduct' and 'editMode'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+
+./app/dashboard/add-product/tiptap.tsx
+51:6  Warning: React Hook useEffect has missing dependencies: 'editor.commands' and 'editor?.isEmpty'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+
+./app/dashboard/analytics/earnings.tsx
+50:8  Warning: React Hook useMemo has a missing dependency: 'chartItems'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+60:8  Warning: React Hook useMemo has a missing dependency: 'chartItems'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./app/dashboard/products/product-variant.tsx
+77:8  Warning: React Hook useEffect has a missing dependency: 'setEdit'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./components/auth/email-verification-form.tsx
+32:8  Warning: React Hook useCallback has missing dependencies: 'error', 'router', 'success', and 'token'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+36:8  Warning: React Hook useEffect has a missing dependency: 'handleVerification'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./components/navigation/theme-switcher.tsx
+16:8  Warning: React Hook useEffect has a missing dependency: 'setSwitchState'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./components/navigation/user-button.tsx
+38:8  Warning: React Hook useEffect has a missing dependency: 'setSwitchState'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
+Failed to compile.
+
+app/products/[slug]/page.tsx
+Type error: Type '{ params: { slug: string; }; }' does not satisfy the constraint 'PageProps'.
+  Types of property 'params' are incompatible.
+    Type '{ slug: string; }' is missing the following properties from type 'Promise<any>': then, catch, finally, [Symbol.toStringTag]
+
+Next.js build worker exited with code: 1 and signal: null

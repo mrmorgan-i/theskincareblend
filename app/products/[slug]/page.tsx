@@ -29,9 +29,10 @@ export async function generateStaticParams(){
     return []
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+    const resolvedParams = await params
     const variant = await db.query.productVariants.findFirst({
-      where: eq(productVariants.id, Number(params.slug)),
+      where: eq(productVariants.id, Number(resolvedParams.slug)),
       with: {
         product: {
           with: {

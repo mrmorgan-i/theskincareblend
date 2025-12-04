@@ -14,10 +14,12 @@ import { useMemo } from "react"
 import formatPrice from "@/lib/format-price"
 import Image from "next/image"
 import { MinusCircle, PlusCircle } from "lucide-react"
-import Lottie from "lottie-react"
+import dynamic from "next/dynamic"
 import emptyCart from "@/public/no-item.json"
 import { createId } from "@paralleldrive/cuid2"
 import { Button } from "../ui/button"
+
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false })
 
 export default function CartItems() {
     const { cart, addToCart, removeFromCart, clearCart, setCheckoutProgress } = useCartStore()

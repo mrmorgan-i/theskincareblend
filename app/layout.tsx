@@ -8,6 +8,7 @@ import Toaster from "@/components/ui/toaster";
 import Footer from "@/components/navigation/footer";
 import DFooter from "@/components/navigation/dfooter";
 import Algolia from "@/components/products/algolia";
+import { Suspense } from "react";
 
 
 const roboto = Roboto({
@@ -38,7 +39,9 @@ export default function RootLayout({
           <div className="flex-grow px-6 md:px-12 mx-auto max-w-8xl">
           <Nav />
           <Toaster />
-          <Algolia />
+          <Suspense fallback={null}>
+            <Algolia />
+          </Suspense>
           {children}
           <div className="pt-6">
           <Footer />

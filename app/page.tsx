@@ -3,8 +3,9 @@ import { db } from "@/server";
 import Algolia from "@/components/products/algolia";
 import ProductTags from "@/components/products/product-tags";
 import WelcomeBanner from "@/components/navigation/welcome-banner";
+import { Suspense } from "react";
 
-export const revalidate = 60 * 60
+export const revalidate = 3600
 
 export default async function Home() {
   const data = await db.query.productVariants.findMany({
@@ -18,10 +19,14 @@ export default async function Home() {
 
     return (
       <main className="">
-        <ProductTags />
+        <Suspense fallback={<div>Loading...</div>}>
+          <ProductTags />
+        </Suspense>
         <WelcomeBanner />
         <div id="products-section">
-          <Products variants={data} />
+          <Suspense fallback={<div>Loading products...</div>}>
+            <Products variants={data} />
+          </Suspense>
       </div>
       </main>
     );
