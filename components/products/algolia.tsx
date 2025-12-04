@@ -66,7 +66,7 @@ function Hit({
 
   export default function Algolia() {
     const [active, setActive] = useState(false)
-    const MCard = useMemo(() => motion(Card), [])
+    const MCard = useMemo(() => motion.create(Card), [])
   
     return (
       <InstantSearchNext
@@ -74,6 +74,7 @@ function Hit({
           persistHierarchicalRootCount: true,
           preserveSharedStateOnUnmount: true,
         }}
+        ignoreMultipleHooksWarning={true}
         indexName="products"
         searchClient={searchClient}
       >

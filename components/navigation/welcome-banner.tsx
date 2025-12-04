@@ -16,9 +16,8 @@ export default function WelcomeBanner() {
       <Image
         src="https://i.imgur.com/VKCm1pH.jpeg"
         alt="Welcome to The Skincare Blend Store"
-        className="rounded-md"
-        layout="fill"
-        objectFit="cover"
+        className="rounded-md object-cover"
+        fill
         priority
       />
       <div className="rounded-md absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-center items-center text-white px-4 md:px-8">
