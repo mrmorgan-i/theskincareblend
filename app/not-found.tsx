@@ -5,6 +5,7 @@ import { ArrowLeft, Search } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
+
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
